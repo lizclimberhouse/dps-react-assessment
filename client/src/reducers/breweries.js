@@ -10,5 +10,5 @@ const breweries = ( state = [], action ) => {
       return state
   }
 }
-
+//TODO how to figure out the total_pages in the_wizard
 export default breweries;
