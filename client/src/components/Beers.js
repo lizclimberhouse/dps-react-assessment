@@ -19,7 +19,7 @@ class Beers extends React.Component {
         <Header>Beers</Header>
         <Divider />
           { beers.map( beer => 
-            <Link key={beer.id} to={`api/beer/${beer.name}`}>{beer.name}<br /></Link>
+            <Link key={beer.id} to={`/api/beer/${beer.name}`}>{beer.name}<br /></Link>
             )
           }
 

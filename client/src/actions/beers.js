@@ -11,7 +11,7 @@ export const getBeers = () => {
 
 export const getOneBeer = (name) => {
   return (dispatch) => {
-    axios.get('api/beer/by_name')
-      .then( res => dispatch({ type: ONE_BEER, beer: res.data.entries }) )
+    axios.get('/api/beer/by_name')
+      .then( res => dispatch({ type: ONE_BEER, beer: res.data }) )
   }
 }
