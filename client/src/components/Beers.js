@@ -2,7 +2,6 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { getBeers } from '../actions/beers';
 import { Container, Divider, Header } from 'semantic-ui-react';
-import { Link } from 'react-router-dom';
 
 class Beers extends React.Component {
 

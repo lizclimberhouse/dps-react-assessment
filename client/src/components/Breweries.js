@@ -2,7 +2,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { getBreweries } from '../actions/breweries';
 import { Container, Divider, Header } from 'semantic-ui-react';
-import InfiniteScroll from 'react-infinite-scroller';
+// import InfiniteScroll from 'react-infinite-scroller';
+import ReactPaginate from 'react-paginate';
 
 class Breweries extends React.Component {
   state = { page: 1, total_pages: '' }
@@ -15,6 +16,7 @@ class Breweries extends React.Component {
     // const { page } = this.state;
     const { dispatch } = this.props;
     dispatch(getBreweries())
+    const total_pages = (50/8)
   }
 
   render() {
@@ -24,17 +26,17 @@ class Breweries extends React.Component {
       <Container>
         <Header>Breweries</Header>
         <Divider />
-        <InfiniteScroll
+        {/* <InfiniteScroll
           pageStart={0}
           loadMore={this.loadBreweries}
           hasMore={page < total_pages}
           loader={<div className="loader" key={0}>Loading...</div>}
-          useWindow={true}
-        >
+          useWindow={false}
+        > */}
         {/* <Card.Group itemsPerRow={4}> */}
           { breweries.map( brewery => <p key={brewery.id}>{brewery.name}</p> ) }
         {/* </Card.Group> */}
-        </InfiniteScroll>
+        {/* </InfiniteScroll> */}
 
       </Container>
     )

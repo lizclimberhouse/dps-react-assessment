@@ -1,6 +1,5 @@
 import axios from 'axios';
 export const BEERS = 'BEERS';
-export const ONE_BEER = 'ONE_BEER';
 
 export const getBeers = () => {
   return (dispatch) => {
