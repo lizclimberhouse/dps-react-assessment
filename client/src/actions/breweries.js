@@ -10,5 +10,3 @@ export const getBreweries = (page) => {
       )
   }
 }
-
-// ?page=5&per_page=8
