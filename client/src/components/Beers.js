@@ -1,14 +1,15 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { getBeers } from '../actions/beers';
+import { Link } from 'react-router-dom';
 import { Container, Divider, Header } from 'semantic-ui-react';
 
 class Beers extends React.Component {
 
+
   componentDidMount() {
     const { dispatch } = this.props;
     dispatch(getBeers())
-    
   }
 
   render() {
@@ -18,7 +19,7 @@ class Beers extends React.Component {
         <Header>Beers</Header>
         <Divider />
           { beers.map( beer => 
-            <Link key={beer.id} to={`/api/beer/${beer.name}`}>{beer.name}<br /></Link>
+            <Link key={beer.id} to={`/beer/${beer.id}`}>{beer.name}<br /></Link>
             )
           }
 
