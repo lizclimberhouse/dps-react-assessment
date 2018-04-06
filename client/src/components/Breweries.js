@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { getBreweries } from '../actions/breweries';
 import { Container, Divider, Header } from 'semantic-ui-react';
 // import InfiniteScroll from 'react-infinite-scroller';
+import { Link } from 'react-router-dom';
 import ReactPaginate from 'react-paginate';
 
 class Breweries extends React.Component {
@@ -34,7 +35,7 @@ class Breweries extends React.Component {
           useWindow={false}
         > */}
         {/* <Card.Group itemsPerRow={4}> */}
-          { breweries.map( brewery => <p key={brewery.id}>{brewery.name}</p> ) }
+          { breweries.map( brewery => <Link key={brewery.id} to={`/brewery/${brewery.id}`}>{brewery.name}<br /></Link> ) }
         {/* </Card.Group> */}
         {/* </InfiniteScroll> */}
 
