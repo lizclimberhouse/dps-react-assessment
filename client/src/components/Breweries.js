@@ -1,44 +1,94 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { getBreweries } from '../actions/breweries';
-import { Container, Divider, Header } from 'semantic-ui-react';
-// import InfiniteScroll from 'react-infinite-scroller';
+import { Container, Divider, Header, Card, Icon, Image, Button } from 'semantic-ui-react';
+import InfiniteScroll from 'react-infinite-scroller';
 import { Link } from 'react-router-dom';
 import ReactPaginate from 'react-paginate';
+import axios from 'axios';
 
+const styles = {
+  container: {
+    height: '600px',
+    overflowY: 'scroll',
+    overflowX: 'hidden',
+  }
+}
 class Breweries extends React.Component {
-  state = { page: 1, total_pages: '' }
+  state = { breweries: {}, page: 4, moreToLoad: true, loaded: false }
 
   componentDidMount() {
-    this.loadBreweries()
+    // debugger
+    let { page } = this.state;
+    const { dispatch } = this.props;
+    dispatch(getBreweries(page))
   }
 
-  loadBreweries = () => {
-    // const { page } = this.state;
+//   componentDidUpdate(prevState, snapshot) {
+//     if (prevState.page < this.state.page) {
+//       this.setState({ page: this.state.page +1 }) }
+//     else if (prevState.page < this.state.page) {
+//       this.setState({ page: this.state.page -1 }) }
+// }
+
+  prevPage = (page) => {
     const { dispatch } = this.props;
-    dispatch(getBreweries())
-    const total_pages = (50/8)
+    debugger
+    dispatch(getBreweries(page - 1))
+  }
+
+  nextPage = (page) => {
+    const { dispatch } = this.props;
+    debugger
+    dispatch(getBreweries(page + 1))
   }
 
   render() {
+    // debugger
+
     const { breweries } = this.props;
-    const { page, total_pages } = this.state;
+    const { page, moreToLoad } = this.state;
+    // debugger
+
     return (
       <Container>
         <Header>Breweries</Header>
         <Divider />
-        {/* <InfiniteScroll
-          pageStart={0}
-          loadMore={this.loadBreweries}
-          hasMore={page < total_pages}
-          loader={<div className="loader" key={0}>Loading...</div>}
-          useWindow={false}
-        > */}
-        {/* <Card.Group itemsPerRow={4}> */}
-          { breweries.map( brewery => <Link key={brewery.id} to={`/brewery/${brewery.id}`}>{brewery.name}<br /></Link> ) }
-        {/* </Card.Group> */}
-        {/* </InfiniteScroll> */}
+        <Container style={styles.container}>
+          {/* <InfiniteScroll
+            pageStart={page}
+            loadMore={this.moreBreweries}
+            hasMore={moreToLoad}
+            loader={<div className="loader" key={0}>Loading...</div>}
+            useWindow={false}
+          > */}
+          <Card.Group itemsPerRow={4}>
+            { breweries.map( brewery => 
+            <Card key={brewery.id}>
+              <Card.Content>
+                <Divider />
+                <Card.Header>
+                  {brewery.name}
+                </Card.Header>
+                <Card.Meta>
+                  {brewery.name} | {brewery.name}
+                </Card.Meta>
+                <Card.Description>
+                  {brewery.name}
+                </Card.Description>
+                </Card.Content>
+                <Card.Content extra>
+                  <Link to={`/brewery/${brewery.id}`}><Icon name='eye'/>{brewery.name}</Link>
+              </Card.Content>
+            </Card> 
+            ) 
+          }
+          </Card.Group>
+          {/* </InfiniteScroll> */}
 
+          <Button onClick={() => this.prevPage(page)}>Previous Page</Button>
+          <Button onClick={() => this.nextPage(page)}>Next Page</Button>
+        </Container>
       </Container>
     )
   }
