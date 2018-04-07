@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { getBeers } from '../actions/beers';
 import { Link } from 'react-router-dom';
-import { Container, Divider, Header, Button, Grid, Comment, Image, Icon, Card } from 'semantic-ui-react';
+import { Container, Divider, Button, Grid, Comment, Icon, Card } from 'semantic-ui-react';
 import i1 from '../images/1.png';
 import i2 from '../images/2.png';
 import i3 from '../images/3.png';
@@ -16,6 +16,8 @@ import i10 from '../images/10.png';
 import i11 from '../images/11.png';
 import i12 from '../images/12.png';
 import i13 from '../images/13.png';
+import BeerRandom from './BeerRandom';
+
 
 const images = { i1, i2, i3, i4, i5, i6, i7, i8, i9, i10, i11, i12, i13 }
 
@@ -76,10 +78,8 @@ class Beers extends React.Component {
     )
   }
 
-  //TODO maybe a "random beer of the day" in this Card?
   render() {
     const { beers } = this.props;
-    const { page } = this.state;
     return (
       <Container>
         <Divider hidden />
@@ -88,24 +88,7 @@ class Beers extends React.Component {
         <Grid>
           <Grid.Column mobile={16} tablet={16} computer={4}>
             <Card.Group>
-              <Card key={1}>
-                <Card.Content>
-                <Image style={styles.image} src={i13} />
-                  <Divider />
-                  <Card.Header>
-                    Hello, what shall we do with this little card?
-                  </Card.Header>
-                  <Card.Meta>
-                    Chain Brewery
-                  </Card.Meta>
-                  <Card.Description>
-                    Established: YEAR
-                  </Card.Description>
-                </Card.Content>
-                <Card.Content extra>
-                  <Link to={'/beers'}><Icon name='heart'/>beers</Link>
-                </Card.Content>
-              </Card> 
+              <BeerRandom />
             </Card.Group>
           </Grid.Column>            
           <Grid.Column mobile={16} tablet={16} computer={12}>

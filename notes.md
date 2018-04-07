@@ -17,4 +17,30 @@ Friday 4/6/18 6:30pm - 12:30am (6 hours)
   NOTE: Was able to style all of the pages. Still need to work on saving the "page" into state so I can refresh the brewery and beer pages. 
   TODO: would like to use other end points and possibly a search function and check the responsiveness again.
 
+Saturday 4/7/18 12noon - 1pm (1 hour)
+  NOTE: got the random beer api to display on a single card in the beers component
+  NOTE: Tried the single beer api again but still doesn't work.
+
 PS: NOT DRY CODE, but it works!
+PS: You can't refresh the individual beer or brewery pages.
+
+OTHER BASIC api's to work on:
+/api/all_glassware
+.entries
+name
+id could be glass style picture 1-14
+
+/api/all_locations
+city is locality
+state is region
+zip is postal_code
+
+/api/locations/:city (aka: locality)
+.entries
+${locality}
+/api/locations/Sacramento
+
+Search api's to work on:
+/api/search_beers?query='Lager' ${Lager} is the search bar, or a click on a type of beer to see the list of xx that shows up
+
+/api/search_breweries?query='Friends' ${Friends} is the search bar etc

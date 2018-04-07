@@ -1,8 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { getBeers } from '../actions/beers';
-import { Link } from 'react-router-dom';
-import { Container, Divider, Header, Card, Icon, Image, Button } from 'semantic-ui-react';
+import { Container, Divider, Image } from 'semantic-ui-react';
 import i1 from '../images/1.png';
 import i2 from '../images/2.png';
 import i3 from '../images/3.png';
@@ -88,6 +87,14 @@ class BeerPage extends React.Component {
     )
   }
 
+  showStyle = (beer) => {
+    return ( beer.style ?
+      <h2>Style: {beer.style.category.name}</h2>
+      :
+      <div></div>
+    )
+  }
+
   render() {
     const { beer = {} } = this.state;
     return (
@@ -95,6 +102,7 @@ class BeerPage extends React.Component {
         <Divider hidden />
         <h1 style={styles.center}>{beer.name}</h1>
         <Divider />
+        { this.showStyle(beer) }
         { this.showImage(Math.floor(beer.abv)) }
         { this.showAbv(beer) }
         { this.showIbu(beer) }

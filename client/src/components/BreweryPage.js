@@ -1,7 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
-import { Container, Divider, Header, Card, Icon, Image, Button } from 'semantic-ui-react';
+import { Container, Divider, Image } from 'semantic-ui-react';
 import { getBreweries } from '../actions/breweries';
 
 const styles = {

@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { getBreweries } from '../actions/breweries';
-import { Container, Divider, Header, Card, Icon, Image, Button, Grid } from 'semantic-ui-react';
+import { Container, Divider, Card, Icon, Image, Button, Grid } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 
 const styles = {
@@ -85,7 +85,6 @@ class Breweries extends React.Component {
 
   render() {
     const { breweries } = this.props;
-    const { page } = this.state;
     return (
       <Container>
         <Divider hidden />
