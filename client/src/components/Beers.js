@@ -2,28 +2,114 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { getBeers } from '../actions/beers';
 import { Link } from 'react-router-dom';
-import { Container, Divider, Header } from 'semantic-ui-react';
+import { Container, Divider, Header, Button, Grid, Comment, Image, Icon } from 'semantic-ui-react';
+import i1 from '../images/1.png';
+import i2 from '../images/2.png';
+import i3 from '../images/3.png';
+import i4 from '../images/4.png';
+import i5 from '../images/5.png';
+import i6 from '../images/6.png';
+import i7 from '../images/7.png';
+import i8 from '../images/8.png';
+import i9 from '../images/9.png';
+import i10 from '../images/10.png';
+import i11 from '../images/11.png';
+import i12 from '../images/12.png';
+import i13 from '../images/13.png';
 
+const images = { i1, i2, i3, i4, i5, i6, i7, i8, i9, i10, i11, i12, i13 }
+
+const styles = {
+  btn: {
+    marginBottom: '30px',
+    width: '150px',
+  },
+  font: {
+    color: 'white',
+  },
+}
 class Beers extends React.Component {
-
+  state = { page: 1 }
 
   componentDidMount() {
+    let { page } = this.state;
     const { dispatch } = this.props;
-    dispatch(getBeers())
+    dispatch(getBeers(page))
+  }
+
+  prevPage = () => {
+    const { dispatch } = this.props;
+    this.setState({ page: this.state.page - 1})
+    dispatch(getBeers(this.state.page - 1))
+  }
+
+  nextPage = () => {
+    const { dispatch } = this.props;
+    this.setState({ page: this.state.page + 1})
+    dispatch(getBeers(this.state.page + 1))
+  }
+
+  prevButton = () => {
+    const { page } = this.state;
+    return ( page === 1 ?
+      <Button disabled style={styles.btn} color='blue' onClick={() => this.prevPage()}>Previous Page</Button>
+      :
+      <Button style={styles.btn} color='blue' onClick={() => this.prevPage()}>Previous Page</Button>
+    )
+  }
+
+  nextButton = () => {
+    const { page } = this.state;
+    return ( page === 11 ?
+      <Button disabled style={styles.btn} color='green' onClick={() => this.nextPage()}>Next Page</Button>
+      :
+      <Button style={styles.btn} color='green' onClick={() => this.nextPage()}>Next Page</Button>
+    )
+  }
+
+  showImage = (id) => {
+    return ( id ?
+      <Comment.Avatar as='a' src={images[`i${id}`]} />
+      :
+      <Comment.Avatar as='a' src={images[`i${13}`]} />
+    )
   }
 
   render() {
     const { beers } = this.props;
+    const { page } = this.state;
     return (
       <Container>
-        <Header>Beers</Header>
+        <Divider hidden />
+        <h1>Beers</h1>
         <Divider />
-          { beers.map( beer => 
-            <Link key={beer.id} to={`/beer/${beer.id}`}>{beer.name}<br /></Link>
+        <Container>
+          { this.prevButton() }
+          { this.nextButton() }
+        </Container>
+        <Grid columns={1}>
+          <Grid.Column>
+          <Comment.Group>
+            { beers.map( beer => 
+            <Comment key={beer.id}>
+            <Divider />
+              { this.showImage(Math.floor(beer.abv)) }
+                <Comment.Content>
+                <Comment.Author style={styles.font}>{beer.name}</Comment.Author>
+                <Comment.Text>
+                  <p style={styles.font}>{beer.style.category.name}</p>
+                </Comment.Text>
+                <Comment.Action>
+                  <Link to={`/beer/${beer.id}`}><Icon name='eye'/>More Info</Link>
+                </Comment.Action>
+              </Comment.Content>
+            </Comment>
             )
           }
-
-
+        </Comment.Group>
+          
+        </Grid.Column>
+      </Grid>
       </Container>
     )
   }

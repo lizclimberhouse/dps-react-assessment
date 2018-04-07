@@ -14,7 +14,8 @@ const styles = {
   }
 }
 class Breweries extends React.Component {
-  state = { breweries: {}, page: 1, moreToLoad: true, loaded: false }
+  state = { page: 1 }
+  //TODO should I be setting state for Brewery here to use it later?
 
   componentDidMount() {
     let { page } = this.state;
@@ -84,7 +85,7 @@ class Breweries extends React.Component {
 
   render() {
     const { breweries } = this.props;
-    const { page, moreToLoad } = this.state;
+    const { page } = this.state;
     return (
       <Container>
         <Divider hidden />
