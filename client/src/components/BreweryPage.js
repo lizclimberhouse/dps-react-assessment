@@ -23,6 +23,11 @@ class BreweryPage extends React.Component {
     const { brewery = {} } = this.state;
     return (
       <div>BreweryPage - {brewery.name}</div>
+      //brewery.website
+      //brewery.description
+      //brewery.established
+      //brewery.brand_classification
+      //brewery.is_mass_owned
     )
   }
 }
