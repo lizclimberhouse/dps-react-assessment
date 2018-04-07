@@ -14,8 +14,8 @@ const styles = {
   }
 }
 class Breweries extends React.Component {
-  state = { page: 1 }
   //TODO should I be setting state for Brewery here to use it later?
+  state = { page: 1 }
 
   componentDidMount() {
     let { page } = this.state;
@@ -26,7 +26,7 @@ class Breweries extends React.Component {
   prevPage = () => {
     const { dispatch } = this.props;
     this.setState({ page: this.state.page - 1})
-    dispatch(getBreweries(this.state.page - 1))
+    dispatch(getBreweries(this.state.page - 1)) // I'll admit that I couldn't figure out a normal way to do pagination, so I hacked it.
   }
 
   nextPage = () => {
