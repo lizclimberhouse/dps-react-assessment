@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Container, Divider, Image } from 'semantic-ui-react';
+import { Container, Divider, Image, Grid } from 'semantic-ui-react';
 import { getBreweries } from '../actions/breweries';
 
 const styles = {
@@ -72,11 +72,17 @@ class BreweryPage extends React.Component {
         <Divider hidden />
         <h1 style={styles.center}>{brewery.name}</h1>
         <Divider />
-        { this.imageShow(brewery) }
-        { this.establishedYear(brewery) }
-        { this.showWebsite(brewery) }
-        { this.privatelyOwned(brewery) }
-        { this.showDesc(brewery) }
+        <Grid>
+          <Grid.Column mobile={16} tablet={16} computer={8}>
+            { this.imageShow(brewery) }
+          </Grid.Column>
+          <Grid.Column mobile={16} tablet={16} computer={8}>
+            { this.establishedYear(brewery) }
+            { this.showWebsite(brewery) }
+            { this.privatelyOwned(brewery) }
+            { this.showDesc(brewery) }
+          </Grid.Column>
+        </Grid>
       </Container>
     )
   }

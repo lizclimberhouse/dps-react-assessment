@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { getBeers } from '../actions/beers';
-import { Container, Divider, Image } from 'semantic-ui-react';
+import { Container, Divider, Image, Grid } from 'semantic-ui-react';
 import i1 from '../images/1.png';
 import i2 from '../images/2.png';
 import i3 from '../images/3.png';
@@ -22,9 +22,8 @@ const styles = {
   center: {
     textAlign: 'center',
   },
-  right: {
-    float: 'right',
-    marginRight: '30px',
+  image: {
+    marginLRight: '30px',
     marginBottom: '15px',
   },
 }
@@ -49,9 +48,9 @@ class BeerPage extends React.Component {
 
   showImage = (id) => {
     return ( id ?
-      <Image style={styles.right} src={images[`i${id}`]} />
+      <Image style={styles.image} src={images[`i${id}`]} />
       :
-      <Image style={styles.right} src={images[`i${13}`]} />
+      <Image style={styles.image} src={images[`i${13}`]} />
     )
   }
 
@@ -102,12 +101,18 @@ class BeerPage extends React.Component {
         <Divider hidden />
         <h1 style={styles.center}>{beer.name}</h1>
         <Divider />
-        { this.showStyle(beer) }
-        { this.showImage(Math.floor(beer.abv)) }
-        { this.showAbv(beer) }
-        { this.showIbu(beer) }
-        { this.showSrb(beer) }
-        { this.showDesc(beer) }
+        <Grid>
+          <Grid.Column mobile={16} tablet={16} computer={12}>
+            { this.showStyle(beer) }
+            { this.showAbv(beer) }
+            { this.showIbu(beer) }
+            { this.showSrb(beer) }
+            { this.showDesc(beer) }
+          </Grid.Column>
+          <Grid.Column mobile={16} tablet={16} computer={4}>
+            { this.showImage(Math.floor(beer.abv)) }
+          </Grid.Column>
+        </Grid>
       </Container>
     )
   }

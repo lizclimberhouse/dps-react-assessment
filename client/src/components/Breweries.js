@@ -1,8 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { getBreweries } from '../actions/breweries';
-import { Container, Divider, Card, Icon, Image, Button, Grid } from 'semantic-ui-react';
+import { Container, Divider, Card, Icon, Image, Button, Grid, Input } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
+import SearchBreweries from './SearchBreweries';
 
 const styles = {
   btn: {
@@ -90,13 +91,16 @@ class Breweries extends React.Component {
         <Divider hidden />
         <h1>Breweries</h1>
         <Divider />
-        <Container>
-          { this.prevButton() }
-          { this.nextButton() }
-        </Container>
         <Grid>
-          <Grid.Column mobile={16} tablet={16} computer={16}>
-          <Card.Group>
+          <Grid.Column mobile={16} tablet={16} computer={4}>
+            <SearchBreweries />
+          </Grid.Column>
+          <Grid.Column mobile={16} tablet={16} computer={12}>
+            <Container>
+              { this.prevButton() }
+              { this.nextButton() }
+            </Container>
+          <Card.Group itemsPerRow={3}>
             { breweries.map( brewery => 
             <Card key={brewery.id}>
               <Card.Content>
