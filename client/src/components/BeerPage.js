@@ -19,7 +19,7 @@ import i13 from '../images/13.png';
 const images = { i1, i2, i3, i4, i5, i6, i7, i8, i9, i10, i11, i12, i13 }
 
 const styles = {
-  center: {
+  title: {
     textAlign: 'center',
   },
   image: {
@@ -29,8 +29,6 @@ const styles = {
 }
 
 class BeerPage extends React.Component {
-  // TODO need to find a way to save page to state.
-
   state = { beer: {} }
 
   componentDidMount() {
@@ -39,12 +37,6 @@ class BeerPage extends React.Component {
     dispatch(getBeers(page))
     this.setState({beer: beers.find( b => b.id === this.props.match.params.id  ) })
   }
-
-  // TODO get rid of this if I can't make it work.
-  // componentDidUpdate(prevProps) {
-  //   if (prevProps.beers.length !== this.props.beers.length)
-  //     this.setState({beer: this.props.beers.find( b => b.id === this.props.match.params.id  ) })
-  // }
 
   showImage = (id) => {
     return ( id ?
@@ -99,7 +91,7 @@ class BeerPage extends React.Component {
     return (
       <Container>
         <Divider hidden />
-        <h1 style={styles.center}>{beer.name}</h1>
+        <h1 style={styles.title}>{beer.name}</h1>
         <Divider />
         <Grid>
           <Grid.Column mobile={16} tablet={16} computer={12}>

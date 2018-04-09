@@ -1,13 +1,6 @@
 import React from 'react';
-import { Container, Divider, Input, Card, Feed, Icon } from 'semantic-ui-react';
-import { Link } from 'react-router-dom';
+import { Divider, Input, Card, Feed, Icon } from 'semantic-ui-react';
 import axios from 'axios';
-
-const styles = {
-  linkColor : {
-    color: 'black',
-  },
-}
 
 class SearchBreweries extends React.Component {
   state = { search: '', findBreweries: [] }
@@ -19,7 +12,7 @@ class SearchBreweries extends React.Component {
   }
 
   showBreweries = () => {
-    const { search, findBreweries } = this.state;
+    const { search } = this.state;
     if (search.length === 0)
       this.setState({ findBreweries: [] })
     else if (search.length > 3) {
@@ -47,9 +40,8 @@ class SearchBreweries extends React.Component {
   render() {
     const { search, findBreweries } = this.state;
     return (
-      <Container>
+      <div>
         <Input
-          fluid
           value={this.state.search}
           onChange={this.handleChange}
           icon={{ name: 'search', circular: true }}
@@ -78,11 +70,10 @@ class SearchBreweries extends React.Component {
                   </Feed.Content>
                 </Feed.Event>
               </Feed>
-            )
-          }
+            )}
           </Card.Content>
         </Card>
-      </Container>
+      </div>
     )
   }
 }

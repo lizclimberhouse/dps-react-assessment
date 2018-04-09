@@ -4,15 +4,11 @@ import axios from 'axios';
 import { Divider, Card, Image } from 'semantic-ui-react';
 
 const styles = {
-  btn: {
-    marginBottom: '30px',
-    width: '150px',
-  },
-  font: {
-    color: 'white',
+  image: {
+    marginLRight: '30px',
+    marginBottom: '15px',
   },
 }
-
 class BeerRandom extends React.Component {
   state = { beer: {} }
 

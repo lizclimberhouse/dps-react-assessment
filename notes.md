@@ -1,14 +1,18 @@
 FOR GRADER:
+  Totoal time spent: 24 hours
+  PART 1, 2 (kinda), 3 done
+  Bonus 1 (some of them), 2, 3 (for locations only), 4
+
   NOT DRY CODE, but it works!
-  You can't refresh the individual beer or brewery pages.
+  My pagination "looks like it works" but I had to hack it because I couldn't figure out a normal pagination option.
+  Due to the api issues (combined with my pagination hack), if you refresh a brewery or beer display page all of the data doesn't persist.
 
 PROJECT LOG:
-  Wed 4/4/18 6:30pm - 2:00am (7.5 hours; 1.5 hour of coding, 6 hours of fighting with Postman due to api changes, see note below) 
-  PART 1: Done. Listed the 50 beers and the 50 breweries
+  Wed 4/4/18 6:30pm - 2:00am (7.5 hours; 1.5 hour of coding, 6 hours of fighting with Postman)
+    PART 1: Done. Listed the 50 beers and the 50 breweries
     TODO: trouble with pagination.
     NOTE: The bundle exec foreman start does not work
     NOTE: Found a bug, the api changed and no longer allows for /apo/beer/:name,      now they use :id, but that also doesn't work. 
-
 
   Thurs 4/5/18 8pm - 1:30am (5.5 hours)
     NOTE: figured out how to show 1 beer and 1 brewery without the broken api end points.
@@ -24,26 +28,7 @@ PROJECT LOG:
     NOTE: got the random beer api to display on a single card in the beers component
     NOTE: Tried the single beer api again but still doesn't work.
 
-  Sunday 4/8/18 9pm - 
+  Sunday 4/8/18 9pm - 1am (4 hours)
     NOTE: Got the Breweries search working. It only searches by a full word exact match. Tried to put in an in/turnary statement that would show a message if nothing came back from the search but I couldn't get it to work.
-
-
-LIZ'S NEXT NOTES:
-  OTHER BASIC api's to work on:
-  /api/all_glassware
-  .entries
-  name
-  id could be glass style picture 1-14
-
-  /api/all_locations
-  city is locality
-  state is region
-  zip is postal_code
-
-  /api/locations/:city (aka: locality)
-  .entries
-  ${locality}
-  /api/locations/Sacramento
-
-  Search api's to work on:
-  /api/search_beers?query='Lager' ${Lager} is the search bar, or a click on a type of beer to see the list of xx that shows up
+    NOTE: Added the glassware page with the images from the beers page.
+    NOTE: added brewery locations page and live search on that page. no pagination on this page.

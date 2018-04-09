@@ -9,6 +9,8 @@ import Beers from './Beers';
 import BeerPage from './BeerPage';
 import Breweries from './Breweries';
 import BreweryPage from './BreweryPage';
+import Glassware from './Glassware';
+import Locations from './Locations';
 
 class App extends Component {
   render() {
@@ -22,6 +24,8 @@ class App extends Component {
           <Route exact path='/beer/:id' component={BeerPage} />
           <Route exact path='/breweries' component={Breweries} />
           <Route exact path='/brewery/:id' component={BreweryPage} />
+          <Route exact path='/glassware' component={Glassware} />
+          <Route exact path='/locations' component={Locations} />
           <Route component={NoMatch} />
         </Switch>
       </Segment>

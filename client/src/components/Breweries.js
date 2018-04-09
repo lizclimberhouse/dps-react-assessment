@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { getBreweries } from '../actions/breweries';
-import { Container, Divider, Card, Icon, Image, Button, Grid, Input } from 'semantic-ui-react';
+import { Container, Divider, Card, Icon, Image, Button, Grid } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 import SearchBreweries from './SearchBreweries';
 
@@ -15,7 +15,6 @@ const styles = {
   }
 }
 class Breweries extends React.Component {
-  //TODO should I be setting state for Brewery here to use it later?
   state = { page: 1 }
 
   componentDidMount() {
@@ -96,11 +95,9 @@ class Breweries extends React.Component {
             <SearchBreweries />
           </Grid.Column>
           <Grid.Column mobile={16} tablet={16} computer={12}>
-            <Container>
-              { this.prevButton() }
-              { this.nextButton() }
-            </Container>
-          <Card.Group itemsPerRow={3}>
+            { this.prevButton() }
+            { this.nextButton() }
+          <Card.Group>
             { breweries.map( brewery => 
             <Card key={brewery.id}>
               <Card.Content>
@@ -116,8 +113,7 @@ class Breweries extends React.Component {
                 <Link to={`/brewery/${brewery.id}`}><Icon name='eye'/>{brewery.name}</Link>
               </Card.Content>
             </Card> 
-            ) 
-          }
+            )}
           </Card.Group>
           </Grid.Column>
         </Grid>

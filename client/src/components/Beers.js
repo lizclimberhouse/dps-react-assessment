@@ -18,7 +18,6 @@ import i12 from '../images/12.png';
 import i13 from '../images/13.png';
 import BeerRandom from './BeerRandom';
 
-
 const images = { i1, i2, i3, i4, i5, i6, i7, i8, i9, i10, i11, i12, i13 }
 
 const styles = {
